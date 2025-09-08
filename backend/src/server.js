@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api/inngest', serve({ client: inngest, functions }))
 app.get('/', (req, res) => {
   console.log(req.auth())
-  res.status(200).send(`<h1>Hello1 <br> World</h1>`)
+  res.status(200).send(`<h1>Chidume Kenechukwu</h1>`)
 })
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
