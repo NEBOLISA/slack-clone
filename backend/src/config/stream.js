@@ -25,5 +25,13 @@ const deleteStreamUser = async (userId) => {
     }
 }
 
-
-export { streamClient, upsertStreamUser, deleteStreamUser }
+const generateStreamToken = (userId) => {
+    try {
+        const userIdString = userId.toString()
+        return streamClient.createToken(userIdString)
+    } catch (error) {
+        console.log("Error generating Stream token", error)
+        return null
+    }
+}
+export { streamClient, upsertStreamUser, deleteStreamUser,generateStreamToken }

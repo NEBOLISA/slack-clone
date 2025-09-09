@@ -4,20 +4,21 @@ import { connectDB } from './config/db.js'
 import { clerkMiddleware } from '@clerk/express'
 import { functions, inngest } from './config/inngest.js'
 import { serve } from 'inngest/express'
+import chatRoutes from './routes/chat.route.js'
+
 const { PORT } = ENV
 const app = express()
+
 app.use(express.json())
 app.use(clerkMiddleware())
 app.use(express.urlencoded({ extended: true }))
-app.use('/api/inngest', serve({ client: inngest, functions }))
+
 app.get('/', (req, res) => {
-  console.log(req.auth())
   res.status(200).send(`<h1>Chidume Kenechukwu</h1>`)
 })
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-  connectDB()
-})
+app.use('/api/inngest', serve({ client: inngest, functions }))
+app.use('/api/chat', chatRoutes)
+
 
 const startServer = async () => {
   try {
