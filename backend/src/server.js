@@ -14,6 +14,7 @@ app.use(clerkMiddleware())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
+  console.log(req.auth())
   res.status(200).send(`<h1>Chidume Kenechukwu</h1>`)
 })
 app.use('/api/inngest', serve({ client: inngest, functions }))
