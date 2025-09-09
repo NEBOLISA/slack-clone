@@ -7,6 +7,8 @@ export const getStreamToken = async(req, res) => {
         res.status(200).json({ token })
     }
     catch (error) {
-
+          console.error('Error in getStreamToken:', error)
+      res.status(500).json({ message: 'Failed to get stream token' })
+    
     }
 }
