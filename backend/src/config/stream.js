@@ -1,5 +1,5 @@
 import { StreamChat } from 'stream-chat'
-import { ENV } from './env'
+import { ENV } from './env.js'
 
 
 
