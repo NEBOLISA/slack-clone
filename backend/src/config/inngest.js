@@ -8,31 +8,39 @@ export const inngest = new Inngest({ id: 'slack-clone' })
 
 const syncUser = inngest.createFunction(
     { id: 'sync-user' }, {event: 'clerk/user.created' },
-  async ({ event}) => {
-      await connectDB()
-      const { id, email_addresses, first_name, last_name, image_url } = event.data
+    async ({ event }) => {
+      try {
+         await connectDB()
+         const { id, email_addresses, first_name, last_name, image_url } =
+           event.data
 
-      const newUser = {
-          clerkId:id,
-          email: email_addresses[0].email_address,
-          name: `${first_name} ${last_name}`,
-          image: image_url
+         const newUser = {
+           clerkId: id,
+           email: email_addresses[0].email_address,
+           name: `${first_name} ${last_name}`,
+           image: image_url
+         }
+         const user = await User.create(newUser)
+
+         const response = await upsertStreamUser({
+           id: newUser.clerkId.toString(),
+           name: newUser.name,
+           image: newUser.image
+         })
+          console.log({response},{user})
+      } catch (error) {
+        console.error('Error syncing user:', error)
       }
-      await User.create(newUser)
-
-      await upsertStreamUser({
-          id: newUser.clerkId.toString(),
-          name: newUser.name,
-          image: newUser.image,
-      })
+     
     
   }
 )
 
-const deleteUser = inngest.createFunction({ id: "delete-user-from-db" }, { event: "clerk/user.deleted" },
+const deleteUser = inngest.createFunction({ id: 'delete-user-from-db' }, { event: 'clerk/user.deleted' },
     async({ event })=> {
         await connectDB()
         const { id } = event.data
+        console.log({id})
         await User.deleteOne({ clerkId: id })
   await deleteStreamUser(id.toString())
     })
