@@ -22,11 +22,11 @@ const syncUser = inngest.createFunction(
          }
          const user = await User.create(newUser)
 
-         const response = await upsertStreamUser({
+         const response = await upsertStreamUser([{
            id: newUser.clerkId.toString(),
            name: newUser.name,
            image: newUser.image
-         })
+         }])
           console.log({response},{user})
       } catch (error) {
         console.error('Error syncing user:', error)
