@@ -5,7 +5,8 @@ import { clerkMiddleware } from '@clerk/express'
 import { functions, inngest } from './config/inngest.js'
 import { serve } from 'inngest/express'
 import chatRoutes from './routes/chat.route.js'
-
+import '../instrument.js'
+import * as Sentry from '@sentry/node'
 const { PORT } = ENV
 const app = express()
 
@@ -17,10 +18,13 @@ app.get('/', (req, res) => {
   console.log(req.auth())
   res.status(200).send(`<h1>Chidume Kenechukwu</h1>`)
 })
+app.get('/debug-sentry', (req, res) => {
+  throw new Error('My first Sentry error!')
+})
 app.use('/api/inngest', serve({ client: inngest, functions }))
 app.use('/api/chat', chatRoutes)
 
-
+Sentry.setupExpressErrorHandler(app)
 const startServer = async () => {
   try {
     await connectDB()
