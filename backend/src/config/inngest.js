@@ -27,7 +27,7 @@ const syncUser = inngest.createFunction(
            name: newUser.name,
            image: newUser.image
          }])
-          console.log({response},{user})
+         
       } catch (error) {
         console.error('Error syncing user:', error)
       }
@@ -40,7 +40,7 @@ const deleteUser = inngest.createFunction({ id: 'delete-user-from-db' }, { event
     async({ event })=> {
         await connectDB()
         const { id } = event.data
-        console.log({id})
+     
         await User.deleteOne({ clerkId: id })
   await deleteStreamUser(id.toString())
     })
