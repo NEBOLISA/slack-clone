@@ -24,16 +24,21 @@ const AuthPage = () => {
           </p>
           <AuthFeatures icon='💬' text='Real-time messaging' />
           <AuthFeatures icon='🎥' text='Video calls & meetings' />
-                  <AuthFeatures icon='🔐' text='Secure & private' />
-                  <SignInButton mode='modal'>
-                      
-          <button className=' cursor-pointer hover:bg-linear-r hover:from-[#7209b7]/90 hover:to-[#680666]/90 bg-linear-to-r from-[#7209b7] from-50% to-[#680666] rounded-md text-sm mt-8 text-center font-semibold flex gap-2  px-5 py-3'>
-            {' '}
-            Get started with Lapo <span>→</span>
-          </button>
-                  </SignInButton>
+          <AuthFeatures icon='🔐' text='Secure & private' />
+          <SignInButton mode='modal'>
+            <button
+              className=' relative  overflow-hidden  bg-blue-600 text-white
+         after:content-[""] after:absolute after:w-[40%] after:h-[290%]
+         after:bg-white/25 after:top-0
+         after:translate-x-[-500%] after:translate-y-[180%]
+         after:transition-transform  after:duration-600
+         hover:after:translate-x-[350%] after:skew-x-[50deg] ease-in-out  hover:after:translate-y-[-90%]  cursor-pointer hover:bg-gradient-to-r hover:from-[#7209b7]/90 hover:to-[#680666]/90 bg-gradient-to-r from-[#7209b7] from-50% to-[#680666] rounded-md text-sm mt-8 text-center font-semibold flex gap-2  px-5 py-3'
+            >
+              Get started with Lapo <span>→</span>
+            </button>
+          </SignInButton>
         </section>
-        <section className='bg-linear-to-br from-[#0f3460] from-10% to-[#7209b7] to-100% bg-[#0f3460] lg:w-[35%] w-full rounded-2xl p-4'>
+        <section className='bg-gradient-to-br from-[#0f3460] from-10% to-[#7209b7] to-100% bg-[#0f3460] lg:w-[35%] w-full rounded-2xl p-4'>
           <img src='./auth-4.png' alt='' />
         </section>
       </main>
