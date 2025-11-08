@@ -2,10 +2,12 @@
 .text-red{
   color: red;
 }
-
+/* body{
+  height: 100vh;
+  overflow: hidden;
+} */
 .auth-container {
-  min-height: 100vh;
-  display: flex;
+  
   background: linear-gradient(125deg, #1a0b2e 0%, #16213e 25%,
       #0f3460 50%,
       #533483 75%,
@@ -13,6 +15,5 @@
     ),
     radial-gradient(ellipse at top left, rgba(116, 58, 213, 0.15) 0%, transparent 100%),
     radial-gradient(ellipse at bottom right, rgba(74, 21, 75, 0.15) 0%, transparent 100%);
-  position: relative;
-  overflow: hidden;
+  
 }

@@ -9,12 +9,12 @@ import LogoComponent from '../components/LogoComponent'
 import AuthFeatures from '../components/AuthFeatures'
 const AuthPage = () => {
   return (
-    <div className=' w-full h-[100vh] overflow-hidden flex justify-center bg-linear-to-br from-[#1a0b2e] from-0% via-[#0f3460] via-30%  to-[#7209b7] to-[100%]'>
-      <main className='overflow-scroll w-full px-12 lg:px-0 lg:w-[90%] h-full mx-auto py-8 flex-col lg:flex-row gap-8 flex justify-between items-center '>
+    <div className=' auth-container md:pb-20 w-full h-screen  overflow-auto flex justify-center bg-linear-to-br from-[#1a0b2e] from-0% via-[#0f3460] via-30%  to-[#7209b7] to-[100%]'>
+      <main className='overflow-scroll w-full px-4 md:px-12 lg:px-0 lg:w-[90%] h-full mx-auto py-8 flex-col lg:flex-row gap-8 flex justify-between items-center '>
         {/* left section */}
-        <section className='bg-[#0f3460] shadow-xl lg:min-w-[400px] h-[85%] lg:w-[30%] w-full text-white p-9 rounded-2xl'>
+        <section className='bg-[#0f3460] shadow-xl lg:min-w-[400px] h-max lg:w-[30%] w-full text-white p-9 rounded-2xl'>
           <LogoComponent />
-          <h1 className='text-4xl font-bold w-[70%] text-transparent bg-white bg-clip-text mb-3'>
+          <h1 className='md:text-4xl text-3xl font-bold md:w-[70%] text-transparent bg-white bg-clip-text mb-3'>
             Where Work Happens ✨
           </h1>
           <p className='text-md mb-4'>
@@ -41,7 +41,9 @@ const AuthPage = () => {
         <section className='bg-gradient-to-br from-[#0f3460] from-10% to-[#7209b7] to-100% bg-[#0f3460] lg:w-[35%] w-full rounded-2xl p-4'>
           <img src='./auth-4.png' alt='' />
         </section>
+       
       </main>
+
       {/* <header>
         <SignedOut>
           <SignInButton mode='modal' />
